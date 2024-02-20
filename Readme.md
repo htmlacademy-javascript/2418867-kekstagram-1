@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
-* Студент: [Артём Захаров](https://up.htmlacademy.ru/javascript-individual/1/user/2418867).
-* Наставник: `Неизвестно`.
+* Студент: [Артём Захаров](https://github.com/Tiizara).
+* Наставник: [Андрей Устименко](https://github.com/ustimenko-andrew).
 
 ---
 
