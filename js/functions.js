@@ -5,7 +5,6 @@ const checkLenght = (str) => str.length > LINE_LENGHT;
 
 checkLenght('Длинна строки');
 
-
 //Palindrom
 const isPalindrome = (string) => {
 
@@ -25,9 +24,9 @@ const isPalindrome = (string) => {
 isPalindrome('madam');
 
 //line length
-const checkString = (string, maxLength) => string.length <= maxLength;
+const checkStringLength = (string, maxLength) => string.length <= maxLength;
 
-checkString ('Строка' , 6);
+checkStringLength ('Строка' , 6);
 
 //extract a number
 
@@ -44,7 +43,6 @@ const extractNumber = (string) => {
 };
 
 extractNumber ('1 кефир, 0.5 батона');
-
 
 //pad start
 
