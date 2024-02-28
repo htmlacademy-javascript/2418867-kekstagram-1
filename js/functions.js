@@ -1,42 +1,39 @@
-checkLenght('Длинна строки');
-isPalindrome('Madam In Eden Im Adam');
-checkString ('Строка' , 6);
-extractNumber ('1 кефир, 0.5 батона');
-padStart('1', 4, '0');
-
 //Кекстаграм
-function checkLenght (str) {
-  if(str.length > 10) {
-    return(true);
-  } else {
-    return(false);
-  }
-}
+const LINE_LENGHT = 10;
+
+const checkLenght = (str) => str.length > LINE_LENGHT;
+
+checkLenght('Длинна строки');
+
 
 //Palindrom
-function isPalindrome (string) {
+const isPalindrome = (string) => {
 
   const tempString = string
     .toLowerCase()
     .replaceAll(' ', '');
 
-  let reverseString = '';
-  for (let i = tempString.length - 1; i >= 0; i--) {
-    reverseString += tempString.at(i);
+  for (let i = 0, j = tempString.length - 1; i < j; i++, j--) {
+    if (string[i] !== string[j]) {
+      return false;
+    }
   }
 
-  return tempString === reverseString;
-}
+  return true;
+};
+
+isPalindrome('madam');
 
 //line length
-function checkString (string, length) {
-  return string.length <= length;
-}
+const checkString = (string, maxLength) => string.length <= maxLength;
+
+checkString ('Строка' , 6);
 
 //extract a number
 
-function extractNumber (string) {
+const extractNumber = (string) => {
   let result = '';
+
   for (let i = 0; i < string.length; i++) {
     if (!Number.isNaN(parseInt(string.at(i), 10))) {
       result += string.at(i);
@@ -44,19 +41,24 @@ function extractNumber (string) {
   }
 
   return parseInt(result, 10);
-}
+};
+
+extractNumber ('1 кефир, 0.5 батона');
+
 
 //pad start
 
-function padStart (string, minLength, pad) {
-  const actualPad = minLength - string.length;
+const padStart = (originalLine, minLength, pad) => {
+  const actualPad = minLength - originalLine.length;
 
   if (actualPad <= 0) {
-    return string;
+    return originalLine;
   }
 
   const padSlice = pad.slice(0, actualPad % pad.length);
   const padRepeat = pad.repeat(actualPad / pad.length);
 
-  return padSlice + padRepeat + string;
-}
+  return padSlice + padRepeat + originalLine;
+};
+
+padStart('1', 4, '0');
