@@ -84,3 +84,5 @@ const createWizard = () => {
     name: NAME[randomNameIndex]
   };
 };
+
+createWizard();
