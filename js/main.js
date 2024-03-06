@@ -1,14 +1,3 @@
-const creatingAnArray = (minNumber,maxNumber) => {
-  const massiveInteger = [];
-
-  for (let i = minNumber; i <= maxNumber; i++) {
-    massiveInteger.push(i);
-  }
-
-  maxNumber = massiveInteger;
-  return maxNumber;
-};
-
 const DESCRIPTIONS = [
   'logo',
   'notification',
@@ -39,9 +28,12 @@ const NAMES = [
 const createPhoto = () => {
 };
 
-const massive = (number) => {
-  Array.from(Array(number));
-  return Array.from(Array(number));
+
+const creatingArray = (number) => {
+  let massiveInteger = [];
+  massiveInteger = Array.apply(null, Array(number))
+    .map((y, i) => i);
+  return massiveInteger;
 };
 
 const createAvatar = () => {
@@ -53,25 +45,20 @@ const createAvatar = () => {
     return Math.floor(result);
   };
 
-  const randomIdIndex = getRandomInteger(0, massive(24).length - 1);
-  const randomAvatarIndex = getRandomInteger(0, massive(6).length - 1);
+  const randomAvatarIndex = getRandomInteger(1, creatingArray(6).length - 1);
   const descriptionNumber = randomAvatarIndex;
-  const randomLikesIndex = getRandomInteger(0, massive(200).length - 1);
-  const randomComentsIndex = getRandomInteger(0, COMMENTS.length - 1);
-  const randomNameIndex = getRandomInteger(0, NAMES.length - 1);
-  const id = creatingAnArray(1,24)[randomIdIndex];
-  const avatar = `img/${ creatingAnArray(1,6)[randomAvatarIndex] }.svg ${ DESCRIPTIONS[descriptionNumber]}`;
-  const likes = creatingAnArray(15,200)[randomLikesIndex];
-  const comments = COMMENTS[randomComentsIndex];
-  const name = NAMES[randomNameIndex];
 
   return {
-    id, avatar, likes, comments, name,
+    id: creatingArray(25)[getRandomInteger(1, creatingArray(25).length - 1)],
+    avatar: `img/${ creatingArray(6)[randomAvatarIndex] }.svg ${ DESCRIPTIONS[descriptionNumber]}`,
+    likes: creatingArray(200)[ getRandomInteger(15, creatingArray(200).length - 1)],
+    comments: COMMENTS[getRandomInteger(0, COMMENTS.length - 1)],
+    name: NAMES[getRandomInteger(0, NAMES.length - 1)]
   };
 };
 
 
-const Zmassive = Array.from(massive(25),createAvatar);
+const Zmassive = Array.from(creatingArray(25),createAvatar);
 console.log(Zmassive);
 
 
