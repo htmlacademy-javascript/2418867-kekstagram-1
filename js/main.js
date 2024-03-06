@@ -1,21 +1,3 @@
-// function shuffle(array) {
-//   let i = array.length,
-//     j = 0,
-//     temp;
-
-//   while (i--) {
-
-//     j = Math.floor(Math.random() * (i + 1));
-
-//     temp = array[i];
-//     array[i] = array[j];
-//     array[j] = temp;
-
-//   }
-
-//   return array;
-// }
-
 const creatingAnArray = (minNumber,maxNumber) => {
   const massiveInteger = [];
 
@@ -27,7 +9,7 @@ const creatingAnArray = (minNumber,maxNumber) => {
   return maxNumber;
 };
 
-const DESCRIPTION = [
+const DESCRIPTIONS = [
   'logo',
   'notification',
   'ice_cream',
@@ -45,7 +27,7 @@ const COMMENTS = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 
-const NAME = [
+const NAMES = [
   'Александр',
   'Вася',
   'Божественный комментатор',
@@ -54,35 +36,42 @@ const NAME = [
   'Екатерина'
 ];
 
-
-const getRandomInteger = (a, b) => {
-  const lower = Math.ceil(Math.min(a, b));
-  const upper = Math.floor(Math.max(a, b));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
+const createPhoto = () => {
 };
 
-const createWizard = () => {
+const massive = (number) => {
+  Array.from(Array(number));
+  return Array.from(Array(number));
+};
 
-  const randomIdIndex = getRandomInteger(0, creatingAnArray(1,24).length - 1);
+const createAvatar = () => {
 
-  const randomAvatarIndex = getRandomInteger(0, creatingAnArray(1,6).length - 1);
+  const getRandomInteger = (a, b) => {
+    const lower = Math.ceil(Math.min(a, b));
+    const upper = Math.floor(Math.max(a, b));
+    const result = Math.random() * (upper - lower + 1) + lower;
+    return Math.floor(result);
+  };
 
+  const randomIdIndex = getRandomInteger(0, massive(24).length - 1);
+  const randomAvatarIndex = getRandomInteger(0, massive(6).length - 1);
   const descriptionNumber = randomAvatarIndex;
-
-  const randomLikesIndex = getRandomInteger(0, creatingAnArray(15,200).length - 1);
-
+  const randomLikesIndex = getRandomInteger(0, massive(200).length - 1);
   const randomComentsIndex = getRandomInteger(0, COMMENTS.length - 1);
-
-  const randomNameIndex = getRandomInteger(0, NAME.length - 1);
+  const randomNameIndex = getRandomInteger(0, NAMES.length - 1);
+  const id = creatingAnArray(1,24)[randomIdIndex];
+  const avatar = `img/${ creatingAnArray(1,6)[randomAvatarIndex] }.svg ${ DESCRIPTIONS[descriptionNumber]}`;
+  const likes = creatingAnArray(15,200)[randomLikesIndex];
+  const comments = COMMENTS[randomComentsIndex];
+  const name = NAMES[randomNameIndex];
 
   return {
-    id: creatingAnArray(1,24)[randomIdIndex],
-    avatar: `img/${ creatingAnArray(1,6)[randomAvatarIndex] }.svg ${ DESCRIPTION[descriptionNumber]}`,
-    likes: creatingAnArray(15,200)[randomLikesIndex],
-    comments: COMMENTS[randomComentsIndex],
-    name: NAME[randomNameIndex]
+    id, avatar, likes, comments, name,
   };
 };
 
-createWizard();
+
+const Zmassive = Array.from(massive(25),createAvatar);
+console.log(Zmassive);
+
+
