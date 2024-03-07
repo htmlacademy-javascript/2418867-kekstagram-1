@@ -46,6 +46,7 @@ const NAMES = [
 const START_NUMBER = 1;
 const AVATAR_NUMBER = 6;
 const PHOTO_MAX_NUMBER = 25;
+const COMMENTS_MAX_NUMBER = 25;
 const LIKE_MIN_NUMBER = 15;
 const LIKE_MAX_NUMBER = 200;
 
@@ -56,7 +57,7 @@ const getRandomInteger = (a, b) => {
   return Math.floor(result);
 };
 
-const createAvatar = (id) => ({
+const createComments = (id) => ({
   id,
   avatar: `img/${getRandomInteger(START_NUMBER, AVATAR_NUMBER)}.svg`,
   messsage: COMMENTS[getRandomInteger(0, COMMENTS.length - 1)],
@@ -67,10 +68,10 @@ const createPhoto = (id) => ({
   id,
   url: `photos/${getRandomInteger(START_NUMBER, PHOTO_MAX_NUMBER) }.jpg ${ DESCRIPTIONS[getRandomInteger(0, DESCRIPTIONS.length - 1)]}`,
   likes: getRandomInteger(LIKE_MIN_NUMBER, LIKE_MAX_NUMBER),
-  comments: Array.from({length: getRandomInteger(1, 25)}, (v, i) => createAvatar(i))
+  comments: Array.from({length: getRandomInteger(START_NUMBER, COMMENTS_MAX_NUMBER)}, (_v, i) => createComments(i))
 });
 
 
-const createGallery = (photosLength) => Array.from({length: photosLength}, (v, i) => createPhoto(i + 1));
+const createGallery = (photosLength) => Array.from({length: photosLength}, (_v, i) => createPhoto(i + 1));
 
 createGallery(25);
