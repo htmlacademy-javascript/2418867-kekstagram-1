@@ -51,15 +51,14 @@ const creatingArray = (number) => {
   return massiveInteger;
 };
 
-
-const getRandomInteger = (a, b) => {
-  const lower = Math.ceil(Math.min(a, b));
-  const upper = Math.floor(Math.max(a, b));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
-};
-
 const createPhoto = () => {
+
+  const getRandomInteger = (a, b) => {
+    const lower = Math.ceil(Math.min(a, b));
+    const upper = Math.floor(Math.max(a, b));
+    const result = Math.random() * (upper - lower + 1) + lower;
+    return Math.floor(result);
+  };
 
   const randomPhotoIndex = getRandomInteger(1, creatingArray(25).length - 1);
   const descriptionNumber = randomPhotoIndex;
