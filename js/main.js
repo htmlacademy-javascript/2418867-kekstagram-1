@@ -4,7 +4,26 @@ const DESCRIPTIONS = [
   'ice_cream',
   'butterfly',
   'snowflake',
-  'car'
+  'car',
+  'photo',
+  'everest',
+  'moscow',
+  'san_rrancisco',
+  'rebus',
+  'sun',
+  'rain',
+  'money',
+  'live',
+  'room',
+  'space',
+  'jump',
+  'people',
+  'red bus',
+  'knife danger',
+  'mad milk',
+  'bad bull',
+  'nice day in russia',
+  'my name god'
 ];
 
 const COMMENTS = [
@@ -52,7 +71,7 @@ const createPhoto = () => {
       id: creatingArray(25)[getRandomInteger(1, creatingArray(25).length - 1)],
       avatar: `img/${ creatingArray(6)[randomAvatarIndex] }.svg`,
       likes: creatingArray(200)[ getRandomInteger(15, creatingArray(200).length - 1)],
-      comments: COMMENTS[getRandomInteger(0, COMMENTS.length - 1)],
+      messsage: COMMENTS[getRandomInteger(0, COMMENTS.length - 1)],
       name: NAMES[getRandomInteger(0, NAMES.length - 1)]
     };
   };
@@ -61,12 +80,16 @@ const createPhoto = () => {
     id: creatingArray(25)[getRandomInteger(1, creatingArray(25).length - 1)],
     avatar: `photos/${ creatingArray(25)[randomPhotoIndex] }.jpg ${ DESCRIPTIONS[descriptionNumber]}`,
     likes: creatingArray(200)[ getRandomInteger(15, creatingArray(200).length - 1)],
-    comments: createAvatar(2)[getRandomInteger(0, COMMENTS.length - 1)],
-    name: NAMES[getRandomInteger(0, NAMES.length - 1)]
+    comments: createAvatar(),
   };
 };
 
 
-const Amassive = Array.from(creatingArray(2),createPhoto);
+const Amassive = () => {
+  Array.from(creatingArray(25),createPhoto);
+  return Array.from(creatingArray(25),createPhoto);
+};
+
+Amassive();
 
 
