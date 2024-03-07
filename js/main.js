@@ -25,10 +25,6 @@ const NAMES = [
   'Екатерина'
 ];
 
-const createPhoto = () => {
-};
-
-
 const creatingArray = (number) => {
   let massiveInteger = [];
   massiveInteger = Array.apply(null, Array(number))
@@ -36,29 +32,41 @@ const creatingArray = (number) => {
   return massiveInteger;
 };
 
-const createAvatar = () => {
 
-  const getRandomInteger = (a, b) => {
-    const lower = Math.ceil(Math.min(a, b));
-    const upper = Math.floor(Math.max(a, b));
-    const result = Math.random() * (upper - lower + 1) + lower;
-    return Math.floor(result);
+const getRandomInteger = (a, b) => {
+  const lower = Math.ceil(Math.min(a, b));
+  const upper = Math.floor(Math.max(a, b));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
+};
+
+const createPhoto = () => {
+
+  const randomPhotoIndex = getRandomInteger(1, creatingArray(25).length - 1);
+  const descriptionNumber = randomPhotoIndex;
+
+  const createAvatar = () => {
+    const randomAvatarIndex = getRandomInteger(1, creatingArray(6).length - 1);
+
+    return {
+      id: creatingArray(25)[getRandomInteger(1, creatingArray(25).length - 1)],
+      avatar: `img/${ creatingArray(6)[randomAvatarIndex] }.svg`,
+      likes: creatingArray(200)[ getRandomInteger(15, creatingArray(200).length - 1)],
+      comments: COMMENTS[getRandomInteger(0, COMMENTS.length - 1)],
+      name: NAMES[getRandomInteger(0, NAMES.length - 1)]
+    };
   };
-
-  const randomAvatarIndex = getRandomInteger(1, creatingArray(6).length - 1);
-  const descriptionNumber = randomAvatarIndex;
 
   return {
     id: creatingArray(25)[getRandomInteger(1, creatingArray(25).length - 1)],
-    avatar: `img/${ creatingArray(6)[randomAvatarIndex] }.svg ${ DESCRIPTIONS[descriptionNumber]}`,
+    avatar: `photos/${ creatingArray(25)[randomPhotoIndex] }.jpg ${ DESCRIPTIONS[descriptionNumber]}`,
     likes: creatingArray(200)[ getRandomInteger(15, creatingArray(200).length - 1)],
-    comments: COMMENTS[getRandomInteger(0, COMMENTS.length - 1)],
+    comments: createAvatar(2)[getRandomInteger(0, COMMENTS.length - 1)],
     name: NAMES[getRandomInteger(0, NAMES.length - 1)]
   };
 };
 
 
-const Zmassive = Array.from(creatingArray(25),createAvatar);
-console.log(Zmassive);
+const Amassive = Array.from(creatingArray(2),createPhoto);
 
 
