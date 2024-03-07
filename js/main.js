@@ -43,52 +43,34 @@ const NAMES = [
   'Leha',
   'Екатерина'
 ];
+const START_NUMBER = 1;
+const AVATAR_NUMBER = 6;
+const PHOTO_MAX_NUMBER = 25;
+const LIKE_MIN_NUMBER = 15;
+const LIKE_MAX_NUMBER = 200;
 
-const creatingArray = (number) => {
-  let massiveInteger = [];
-  massiveInteger = Array.apply(null, Array(number))
-    .map((y, i) => i);
-  return massiveInteger;
+const getRandomInteger = (a, b) => {
+  const lower = Math.ceil(Math.min(a, b));
+  const upper = Math.floor(Math.max(a, b));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
 };
 
-const createPhoto = () => {
+const createAvatar = (id) => ({
+  id,
+  avatar: `img/${getRandomInteger(START_NUMBER, AVATAR_NUMBER)}.svg`,
+  messsage: COMMENTS[getRandomInteger(0, COMMENTS.length - 1)],
+  name: NAMES[getRandomInteger(0, NAMES.length - 1)]
+});
 
-  const getRandomInteger = (a, b) => {
-    const lower = Math.ceil(Math.min(a, b));
-    const upper = Math.floor(Math.max(a, b));
-    const result = Math.random() * (upper - lower + 1) + lower;
-    return Math.floor(result);
-  };
-
-  const randomPhotoIndex = getRandomInteger(1, creatingArray(25).length - 1);
-  const descriptionNumber = randomPhotoIndex;
-
-  const createAvatar = () => {
-    const randomAvatarIndex = getRandomInteger(1, creatingArray(6).length - 1);
-
-    return {
-      id: creatingArray(25)[getRandomInteger(1, creatingArray(25).length - 1)],
-      avatar: `img/${ creatingArray(6)[randomAvatarIndex] }.svg`,
-      likes: creatingArray(200)[ getRandomInteger(15, creatingArray(200).length - 1)],
-      messsage: COMMENTS[getRandomInteger(0, COMMENTS.length - 1)],
-      name: NAMES[getRandomInteger(0, NAMES.length - 1)]
-    };
-  };
-
-  return {
-    id: creatingArray(25)[getRandomInteger(1, creatingArray(25).length - 1)],
-    avatar: `photos/${ creatingArray(25)[randomPhotoIndex] }.jpg ${ DESCRIPTIONS[descriptionNumber]}`,
-    likes: creatingArray(200)[ getRandomInteger(15, creatingArray(200).length - 1)],
-    comments: createAvatar(),
-  };
-};
+const createPhoto = (id) => ({
+  id,
+  url: `photos/${getRandomInteger(START_NUMBER, PHOTO_MAX_NUMBER) }.jpg ${ DESCRIPTIONS[getRandomInteger(0, DESCRIPTIONS.length - 1)]}`,
+  likes: getRandomInteger(LIKE_MIN_NUMBER, LIKE_MAX_NUMBER),
+  comments: Array.from({length: getRandomInteger(1, 25)}, (v, i) => createAvatar(i))
+});
 
 
-const Amassive = () => {
-  Array.from(creatingArray(25),createPhoto);
-  return Array.from(creatingArray(25),createPhoto);
-};
+const createGallery = (photosLength) => Array.from({length: photosLength}, (v, i) => createPhoto(i + 1));
 
-Amassive();
-
-
+createGallery(25);
