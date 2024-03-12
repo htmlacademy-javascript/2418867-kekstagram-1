@@ -1,4 +1,4 @@
-import {getRandomInteger} from './util.js';
+import {getRandomInteger} from './utils.js';
 
 const DESCRIPTIONS = [
   'logo',
@@ -67,7 +67,4 @@ const createPhoto = (id) => ({
   comments: Array.from({length: getRandomInteger(START_NUMBER, COMMENT_MAX_NUMBER)}, (_v, i) => createComment(i))
 });
 
-
-const createGallery = (photosLength) => Array.from({length: photosLength}, (_v, i) => createPhoto(i + 1));
-
-export {createGallery};
+export const createGallery = (photosLength) => Array.from({length: photosLength}, (_v, i) => createPhoto(i + 1));
