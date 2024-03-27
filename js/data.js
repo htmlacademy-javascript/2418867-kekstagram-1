@@ -55,7 +55,7 @@ const LIKE_MAX_NUMBER = 200;
 
 const createComment = (id) => ({
   id,
-  avatar: `img/${getRandomInteger(START_NUMBER, AVATAR_NUMBER)}.svg`,
+  avatar: `img/avatar-${getRandomInteger(START_NUMBER, AVATAR_NUMBER)}.svg`,
   messsage: COMMENTS[getRandomInteger(0, COMMENTS.length - 1)],
   name: NAMES[getRandomInteger(0, NAMES.length - 1)]
 });

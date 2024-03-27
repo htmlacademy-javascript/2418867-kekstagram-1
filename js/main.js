@@ -1,1 +1,1 @@
-import './displayPhoto.js';
+import './render-gallery.js';
