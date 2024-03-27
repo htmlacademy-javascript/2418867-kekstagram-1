@@ -55,14 +55,15 @@ const LIKE_MAX_NUMBER = 200;
 
 const createComment = (id) => ({
   id,
-  avatar: `img/${getRandomInteger(START_NUMBER, AVATAR_NUMBER)}.svg`,
+  avatar: `img/avatar-${getRandomInteger(START_NUMBER, AVATAR_NUMBER)}.svg`,
   messsage: COMMENTS[getRandomInteger(0, COMMENTS.length - 1)],
   name: NAMES[getRandomInteger(0, NAMES.length - 1)]
 });
 
 const createPhoto = (id) => ({
   id,
-  url: `photos/${getRandomInteger(START_NUMBER, PHOTO_MAX_NUMBER) }.jpg ${ DESCRIPTIONS[getRandomInteger(0, DESCRIPTIONS.length - 1)]}`,
+  url: `photos/${getRandomInteger(START_NUMBER, PHOTO_MAX_NUMBER) }.jpg`,
+  description: `${ DESCRIPTIONS[getRandomInteger(0, DESCRIPTIONS.length - 1)]}`,
   likes: getRandomInteger(LIKE_MIN_NUMBER, LIKE_MAX_NUMBER),
   comments: Array.from({length: getRandomInteger(START_NUMBER, COMMENT_MAX_NUMBER)}, (_v, i) => createComment(i))
 });

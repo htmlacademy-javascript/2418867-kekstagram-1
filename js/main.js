@@ -1,3 +1,1 @@
-import {createGallery} from './data.js';
-
-createGallery(25);
+import './render-gallery.js';
