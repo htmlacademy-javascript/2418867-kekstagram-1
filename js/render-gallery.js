@@ -14,7 +14,9 @@ const createPhotoElement = (photo) => {
   return photoElement;
 };
 
+
 export const renderGallery = (gallery) => {
+
   const galleryFragment = document.createDocumentFragment();
 
   gallery.forEach((photo) => {
