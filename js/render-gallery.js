@@ -1,5 +1,3 @@
-import {createGallery} from './data.js';
-
 const picturesContainerElement = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture')
   .content
@@ -11,11 +9,14 @@ const createPhotoElement = (photo) => {
   photoElement.querySelector('.picture__img').alt = photo.description;
   photoElement.querySelector('.picture__comments').textContent = photo.comments.length;
   photoElement.querySelector('.picture__likes').textContent = photo.likes;
+  photoElement.dataset.photoElementId = photo.id;
 
   return photoElement;
 };
 
-const renderGallery = (gallery) => {
+
+export const renderGallery = (gallery) => {
+
   const galleryFragment = document.createDocumentFragment();
 
   gallery.forEach((photo) => {
@@ -24,5 +25,3 @@ const renderGallery = (gallery) => {
 
   picturesContainerElement.append(galleryFragment);
 };
-
-renderGallery(createGallery(4));

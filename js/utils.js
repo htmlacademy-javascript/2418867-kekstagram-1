@@ -6,7 +6,9 @@ const getRandomInteger = (a, b) => {
   return Math.floor(result);
 };
 
-export {getRandomInteger};
+const isEscapeKey = (key) => key === 'Escape';
+
+export {getRandomInteger, isEscapeKey};
 
 //Кекстаграм
 const LINE_LENGHT = 10;

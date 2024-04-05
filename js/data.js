@@ -1,27 +1,27 @@
 import {getRandomInteger} from './utils.js';
 
 const DESCRIPTIONS = [
-  'logo',
+  'Больше жизни, меньше беспокойства',
   'notification',
-  'ice_cream',
-  'butterfly',
+  'Плюс одна страна в копилку',
+  'Было сложно, но зато как вышло!',
   'snowflake',
-  'car',
-  'photo',
-  'everest',
-  'moscow',
-  'san_rrancisco',
-  'rebus',
-  'sun',
+  'Мне нужен шестимесячный отпуск два раза в год',
+  'Уровень доверия: селфи без фильтра',
+  'Я, снова я и опять я',
+  'На тот случай, если вы забыли, как я выгляжу',
+  'Маскируюсь под местных. Как думаете, получилось?',
+  'Miss me?',
+  'Икона стиля районного масштаба',
   'rain',
-  'money',
-  'live',
-  'room',
-  'space',
-  'jump',
+  'Требую шестимесячные каникулы. Два раза в год!',
+  'Я никогда не упускаю шанс потанцевать',
+  'Мы легли на дно, мы зажгли огни, во Вселенной только мы одни',
+  'Сегодня один из таких дней, когда даже моему кофе нужен кофе',
+  'Нормальные люди по утрам просыпаются, а я восстаю',
   'people',
-  'red bus',
-  'knife danger',
+  'Некоторые дни начинаются лучше остальных',
+  'На 90 % состою из «важных» дел',
   'mad milk',
   'bad bull',
   'nice day in russia',
@@ -45,13 +45,13 @@ const NAMES = [
   'Leha',
   'Екатерина'
 ];
+const PHOTO_COUNT = 25;
 const START_NUMBER = 1;
 const AVATAR_NUMBER = 6;
 const PHOTO_MAX_NUMBER = 25;
 const COMMENT_MAX_NUMBER = 25;
 const LIKE_MIN_NUMBER = 15;
 const LIKE_MAX_NUMBER = 200;
-
 
 const createComment = (id) => ({
   id,
@@ -68,4 +68,4 @@ const createPhoto = (id) => ({
   comments: Array.from({length: getRandomInteger(START_NUMBER, COMMENT_MAX_NUMBER)}, (_v, i) => createComment(i))
 });
 
-export const createGallery = (photosLength) => Array.from({length: photosLength}, (_v, i) => createPhoto(i + 1));
+export const createGallery = () => Array.from({length: PHOTO_COUNT}, (_v, i) => createPhoto(i + 1));
