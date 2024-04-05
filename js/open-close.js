@@ -5,6 +5,7 @@ const picturesContainer = document.querySelector('.pictures');
 
 export const renderPicturesGallery = (pictures) => {
   picturesContainer.addEventListener('click', (evt) => {
+
     const photo = evt.target.closest('[data-photo-element-id]');
 
     if (!photo) {
@@ -14,10 +15,12 @@ export const renderPicturesGallery = (pictures) => {
     evt.preventDefault();
 
     const picture = pictures.find (
-      (item) => item.id === +photo.dataset.photoElementId
+      (item) => item.id === Number(photo.dataset.photoElementId)
     );
+
     fullPicture(picture);
   });
 
   renderGallery(pictures);
 };
+
