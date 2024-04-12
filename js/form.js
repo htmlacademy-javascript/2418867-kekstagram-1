@@ -12,10 +12,9 @@ uploadForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
 
   if (isValide()) {
-    console.log('Форма валидна!');
     imgUploadClose();
   } else {
-    console.log('Форма не валидна!');
+    return ('Форма не валидна!');
   }
 });
 
