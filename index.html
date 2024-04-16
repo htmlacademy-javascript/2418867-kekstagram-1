@@ -30,7 +30,7 @@
       <section class="img-upload">
         <div class="img-upload__wrapper">
           <h2 class="img-upload__title  visually-hidden">Загрузка фотографии</h2>
-          <form class="img-upload__form" id="upload-select-image" method="post" enctype="multipart/form-data" autocomplete="off">
+          <form class="img-upload__form" id="upload-select-image" method="post" enctype="multipart/form-data" autocomplete="off" action="https://28.javascript.htmlacademy.pro/kekstagram">
 
             <!-- Изначальное состояние поля для загрузки изображения -->
             <fieldset class="img-upload__start">
@@ -232,8 +232,6 @@
     <div class="img-upload__message  img-upload__message--loading">Загружаем...</div>
   </template>
 
-  <script src="./js/main.js" type="module"></script>
-
   <template id="comment">
     <li class="social__comment">
       <img
@@ -245,6 +243,9 @@
       <p class="social__text">{{текст комментария}}</p>
     </li>
   </template>
+
+  <script src="./vendor/pristine/pristine.min.js"></script>
+  <script src="./js/main.js" type="module"></script>
 
 </body>
 </html>
