@@ -1,5 +1,8 @@
 import { isEscapeKey } from './utils.js';
 import { isValide, resetValidation } from './validation.js';
+import { resetScale } from './scale.js';
+import { resetEffects } from './slider.js';
+
 
 const changeUpload = document.querySelector('#upload-file');
 const imgUpload = document.querySelector('.img-upload__overlay');
@@ -22,6 +25,8 @@ changeUpload.addEventListener('change', () => {
   imgUpload.classList.remove('hidden');
   modalOpen.classList.add('modal-open');
   document.addEventListener('keydown', onImgUploadEsc);
+  resetScale();
+  resetEffects();
 });
 
 closeImg.addEventListener('click', () => {
