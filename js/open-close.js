@@ -14,7 +14,7 @@ export const renderPicturesGallery = (pictures) => {
 
     evt.preventDefault();
 
-    const picture = pictures.find (
+    const picture = pictures.find(
       (item) => item.id === Number(photo.dataset.photoElementId)
     );
 

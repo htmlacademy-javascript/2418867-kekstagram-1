@@ -1,49 +1,27 @@
-const showAlertText = () => {
-  const errorTemplate = document.querySelector('#success')
-    .content
-    .querySelector('.success__title');
-
-  const errorElement = errorTemplate.cloneNode(true);
-  errorElement.style.textAlign = 'center';
-  document.body.append(errorElement);
-};
-
-const showAlertButton = () => {
-  const errorTemplate = document.querySelector('#success')
-    .content
-    .querySelector('.success__button');
-
-  const errorElement = errorTemplate.cloneNode(true);
-  errorElement.style.position = 'absolute';
-  errorElement.style.left = '0';
-  errorElement.style.buttom = '0';
-  errorElement.style.right = '0';
-  document.body.append(errorElement);
-};
-
-const closeAlert = () => {
-  const buttonAlert = document.querySelector('.success__button');
-  const textAlert = document.querySelector('.success__title');
-  buttonAlert.addEventListener('click', () => {
-    buttonAlert.classList.add('hidden');
-    textAlert.classList.add('hidden');
-  });
-};
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    const buttonAlert = document.querySelector('.success__button');
-    const textAlert = document.querySelector('.success__title');
-    buttonAlert.classList.add('hidden');
-    textAlert.classList.add('hidden');
-  }
-});
+const successTemplate = document.querySelector('#success').content.querySelector('.success');
 
 const showAlert = () => {
-  showAlertText();
-  showAlertButton();
-  closeAlert();
+  const successElement = successTemplate.cloneNode(true);
+  successElement.querySelector('.success__button').addEventListener('click', closeAlert);
+  successElement.addEventListener('click', (evt) => {
+    if(evt.target.classList.contains('success')){
+      closeAlert();
+    }
+  })
+  document.body.append(successElement);
+  document.addEventListener('keydown', escKeyHandler);
+}
+
+const closeAlert = () => {
+  document.querySelector('.success').remove();
+  document.removeEventListener('keydown', escKeyHandler);
 };
+
+function escKeyHandler(e){
+  if (e.key === 'Escape') {
+    closeAlert()
+  }
+}
 
 export {showAlert};
 

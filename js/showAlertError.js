@@ -1,49 +1,34 @@
-const showAlertText = () => {
-  const errorTemplate = document.querySelector('#error')
-    .content
-    .querySelector('.error__title');
+const errorTemplate = document.querySelector('#error').content.querySelector('.error');
+let ecsListenerFn;
 
-  const errorElement = errorTemplate.cloneNode(true);
-  errorElement.style.textAlign = 'center';
-  document.body.append(errorElement);
-};
-
-const showAlertButton = () => {
-  const errorTemplate = document.querySelector('#error')
-    .content
-    .querySelector('.error__button');
-
-  const errorElement = errorTemplate.cloneNode(true);
-  errorElement.style.position = 'absolute';
-  errorElement.style.left = '0';
-  errorElement.style.buttom = '0';
-  errorElement.style.right = '0';
-  document.body.append(errorElement);
-};
+const showAlertError = (setEscListener) => {
+  if (!document.querySelector('.error')) {
+    const errorElement = errorTemplate.cloneNode(true);
+    ecsListenerFn = setEscListener;
+    errorElement.querySelector('.error__button').addEventListener('click', () => {
+      closeAlert();
+    });
+    errorElement.addEventListener('click', (evt) => {
+      if (evt.target.classList.contains('error')) {
+        closeAlert();
+      }
+    })
+    document.body.append(errorElement);
+    document.addEventListener('keydown', escKeyHandler());
+  }
+}
 
 const closeAlert = () => {
-  const buttonAlert = document.querySelector('.error__button');
-  const textAlert = document.querySelector('.error__title');
-  buttonAlert.addEventListener('click', () => {
-    buttonAlert.classList.add('hidden');
-    textAlert.classList.add('hidden');
-  });
+  document.querySelector('.error').remove();
+  document.removeEventListener('keydown', escKeyHandler);
+  ecsListenerFn();
 };
 
-document.addEventListener('keydown', (e) => {
+function escKeyHandler(e) {
   if (e.key === 'Escape') {
-    const buttonAlert = document.querySelector('.error__button');
-    const textAlert = document.querySelector('.error__title');
-    buttonAlert.classList.add('hidden');
-    textAlert.classList.add('hidden');
+    closeAlert()
   }
-});
+}
 
-const showAlertError = () => {
-  showAlertText();
-  showAlertButton();
-  closeAlert();
-};
-
-export {showAlertError};
+export { showAlertError };
 

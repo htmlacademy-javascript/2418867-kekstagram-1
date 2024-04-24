@@ -11,14 +11,33 @@ const modalOpen = document.querySelector('body');
 const closeImg = document.querySelector('#upload-cancel');
 
 const uploadForm = document.querySelector('.img-upload__form');
+const imgUploadButton = document.querySelector('.img-upload__submit');
+
+const addEscListener = () => {
+  document.addEventListener('keydown', onImgUploadEsc);
+}
+
+const SubmitButtonCaption = {
+  PUBLIC: 'Опубликовать',
+  PUBLISHING: 'Публикую...'
+}
+
+const blockButton = (isBlocked = false) => {
+  if (isBlocked) {
+    imgUploadButton.disabled = true;
+    imgUploadButton.textContent = SubmitButtonCaption.PUBLISHING;
+  } else {
+    imgUploadButton.disabled = false;
+    imgUploadButton.textContent = SubmitButtonCaption.PUBLIC;
+  }
+}
 
 const setUserFormSubmit = (onSuccess) => {
   uploadForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
-
     if (isValide()) {
+      blockButton(true);
       const formData = new FormData(evt.target);
-
       fetch(
         'https://28.javascript.htmlacademy.pro/kekstagram',
         {
@@ -32,11 +51,16 @@ const setUserFormSubmit = (onSuccess) => {
             imgUploadClose();
             showAlert();
           } else {
-            showAlertError();
+            document.removeEventListener('keydown', onImgUploadEsc);
+            showAlertError(addEscListener);
           }
         })
         .catch(() => {
-          showAlertError();
+          document.removeEventListener('keydown', onImgUploadEsc);
+          showAlertError(addEscListener);
+        })
+        .finally(() => {
+          blockButton();
         });
     }
   });
@@ -69,4 +93,4 @@ function imgUploadClose() {
   uploadForm.reset();
 }
 
-export {setUserFormSubmit, imgUploadClose};
+export { setUserFormSubmit, imgUploadClose };
