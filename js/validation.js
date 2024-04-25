@@ -52,8 +52,13 @@ pristine.addValidator(
   `Описание не должно быть дленнее ${MAX_DESCRIPTION_LENGTH} символов`
 );
 
+const isTextFieldFocus = () =>
+  document.activeElement === hashtagField ||
+  document.activeElement === description;
+
+
 const resetValidation = () => pristine.reset();
 
 const isValide = () => pristine.validate();
 
-export { isValide, resetValidation };
+export { isValide, resetValidation, isTextFieldFocus };
