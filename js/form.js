@@ -13,14 +13,16 @@ const closeImg = document.querySelector('#upload-cancel');
 const uploadForm = document.querySelector('.img-upload__form');
 const imgUploadButton = document.querySelector('.img-upload__submit');
 
+const ImgFiltersInactive = document.querySelector('.img-filters--inactive');
+
 const addEscListener = () => {
   document.addEventListener('keydown', onImgUploadEsc);
-}
+};
 
 const SubmitButtonCaption = {
   PUBLIC: 'Опубликовать',
   PUBLISHING: 'Публикую...'
-}
+};
 
 const blockButton = (isBlocked = false) => {
   if (isBlocked) {
@@ -30,7 +32,7 @@ const blockButton = (isBlocked = false) => {
     imgUploadButton.disabled = false;
     imgUploadButton.textContent = SubmitButtonCaption.PUBLIC;
   }
-}
+};
 
 const setUserFormSubmit = (onSuccess) => {
   uploadForm.addEventListener('submit', (evt) => {
@@ -93,4 +95,4 @@ function imgUploadClose() {
   uploadForm.reset();
 }
 
-export { setUserFormSubmit, imgUploadClose };
+export { setUserFormSubmit, imgUploadClose, ImgFiltersInactive };

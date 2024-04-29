@@ -22,5 +22,6 @@ export const renderPicturesGallery = (pictures) => {
   });
 
   renderGallery(pictures);
+
 };
 

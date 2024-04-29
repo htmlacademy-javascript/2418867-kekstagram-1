@@ -5,6 +5,7 @@ const pictureTemplate = document.querySelector('#picture')
 
 const createPhotoElement = (photo) => {
   const photoElement = pictureTemplate.cloneNode(true);
+
   photoElement.querySelector('.picture__img').src = photo.url;
   photoElement.querySelector('.picture__img').alt = photo.description;
   photoElement.querySelector('.picture__comments').textContent = photo.comments.length;
@@ -25,3 +26,4 @@ export const renderGallery = (gallery) => {
 
   picturesContainerElement.append(galleryFragment);
 };
+
