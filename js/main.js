@@ -6,7 +6,7 @@ import { showErrorMessage } from './utils.js';
 fetch('https://28.javascript.htmlacademy.pro/kekstagram/data')
   .then((response) => {
     if (response.ok) {
-      return response.json()
+      return response.json();
     } else {
       throw new Error('Parameter is not a number!');
     }
@@ -15,7 +15,7 @@ fetch('https://28.javascript.htmlacademy.pro/kekstagram/data')
     filterInit(gallery, renderPicturesGallery);
   })
   .catch(() => {
-    showErrorMessage('Error!!!')
+    showErrorMessage('Error!!!');
   });
 
 setUserFormSubmit(imgUploadClose);

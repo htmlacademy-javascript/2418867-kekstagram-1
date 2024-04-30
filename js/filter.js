@@ -1,4 +1,4 @@
-import { debounce } from "./utils.js";
+import { debounce } from './utils.js';
 
 const PICTURES_COUNT = 10;
 const Filter = {

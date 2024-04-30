@@ -1,4 +1,4 @@
-import { ALERT_SHOW_TIME } from "./constant.js";
+import { ALERT_SHOW_TIME } from './constant.js';
 
 const getRandomInteger = (a, b) => {
   const lower = Math.ceil(Math.min(a, b));
@@ -18,7 +18,7 @@ export const debounce = (callback, timeoutDelay = 500) => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
   };
-}
+};
 
 export const showErrorMessage = (message) => {
   const alert = document.createElement('div');

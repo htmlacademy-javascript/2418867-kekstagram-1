@@ -18,8 +18,8 @@ const createPhotoElement = (photo) => {
 const clearGallery = () => {
   document.querySelectorAll('.picture').forEach((picture) => {
     picture.remove();
-  })
-}
+  });
+};
 
 export const renderGallery = (gallery) => {
 
