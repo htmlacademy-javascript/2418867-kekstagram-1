@@ -1,11 +1,21 @@
-import {renderPicturesGallery} from './open-close.js';
-import { setUserFormSubmit, imgUploadClose, ImgFiltersInactive } from './form.js';
+import { renderPicturesGallery } from './open-close.js';
+import { setUserFormSubmit, imgUploadClose } from './form.js';
+import { filterInit } from './filter.js';
+import { showErrorMessage } from './utils.js';
 
 fetch('https://28.javascript.htmlacademy.pro/kekstagram/data')
-  .then((response) => response.json())
+  .then((response) => {
+    if (response.ok) {
+      return response.json()
+    } else {
+      throw new Error('Parameter is not a number!');
+    }
+  })
   .then((gallery) => {
-    renderPicturesGallery(gallery);
-    ImgFiltersInactive.classList.remove('img-filters--inactive');
+    filterInit(gallery, renderPicturesGallery);
+  })
+  .catch(() => {
+    showErrorMessage('Error!!!')
   });
 
 setUserFormSubmit(imgUploadClose);

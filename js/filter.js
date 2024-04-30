@@ -1,3 +1,5 @@
+import { debounce } from "./utils.js";
+
 const PICTURES_COUNT = 10;
 const Filter = {
   DEFAULT: 'filter-default',
@@ -8,15 +10,16 @@ const Filter = {
 const filterElement = document.querySelector('.img-filters');
 let currentFilter = Filter.DEFAULT;
 let pictures = [];
+let renderFunction;
 
 const sortRandomly = () => Math.random() - 0.5;
 
-const sortByComments = (pictureA, pictureB) => pictureA.comments.length - pictureB.comments.length;
+const sortByComments = (pictureA, pictureB) => pictureB.comments.length - pictureA.comments.length;
 
 const getFilteredPictures = () => {
   switch (currentFilter) {
     case Filter.RANDOM:
-      return [...pictures].sort(sortRandomly).slice(0,PICTURES_COUNT);
+      return [...pictures].sort(sortRandomly).slice(0, PICTURES_COUNT);
     case Filter.DISCUSSED:
       return [...pictures].sort(sortByComments);
     default:
@@ -24,31 +27,39 @@ const getFilteredPictures = () => {
   }
 };
 
-const setOnFilterClick = (callback) => {
-  filterElement.addEventListener('click', (evt) => {
-    if (!evt.target.classList.contains('img-filteres__button')) {
-      return;
-    }
+filterElement.addEventListener('click', (evt) => {
+  if (!evt.target.classList.contains('img-filters__button')) {
+    return;
+  }
+  const clickedButton = evt.target;
+  if (clickedButton.id === currentFilter) {
+    return;
+  }
+  filterElement
+    .querySelector('.img-filters__button--active')
+    .classList.remove('img-filters__button--active');
 
-    const clickedButton = evt.target;
-    if (clickedButton.id === currentFilter) {
-      return;
-    }
+  clickedButton.classList.add('img-filters__button--active');
+});
 
-    filterElement
-      .querySelector('.img-filteres__button--active')
-      .classList.remove('.img-filteres__button--active');
-    clickedButton.classList.add('img-filteres__button--active');
-    currentFilter = clickedButton.id;
-    callback(getFilteredPictures());
-  });
-};
+filterElement.addEventListener('click', debounce((evt) => {
+  if (!evt.target.classList.contains('img-filters__button')) {
+    return;
+  }
+  const clickedButton = evt.target;
+  if (clickedButton.id === currentFilter) {
+    return;
+  }
+  currentFilter = clickedButton.id;
+  renderFunction(getFilteredPictures());
+})
+);
 
-
-const init = (loadedPictures, callback) => {
-  filterElement.classList.remove('img-filteres--inactive');
+const filterInit = (loadedPictures, callback) => {
+  filterElement.classList.remove('img-filters--inactive');
   pictures = [...loadedPictures];
-  setOnFilterClick(callback);
+  renderFunction = callback;
+  renderFunction(pictures);
 };
 
-export {init, getFilteredPictures};
+export { filterInit, getFilteredPictures };

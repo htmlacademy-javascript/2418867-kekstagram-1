@@ -15,11 +15,16 @@ const createPhotoElement = (photo) => {
   return photoElement;
 };
 
+const clearGallery = () => {
+  document.querySelectorAll('.picture').forEach((picture) => {
+    picture.remove();
+  })
+}
 
 export const renderGallery = (gallery) => {
 
   const galleryFragment = document.createDocumentFragment();
-
+  clearGallery();
   gallery.forEach((photo) => {
     galleryFragment.append(createPhotoElement(photo));
   });

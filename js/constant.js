@@ -61,3 +61,5 @@ export const ImageEffects = {
 };
 
 export const IMAGE_EFFECT_INITIAL = 'NONE';
+
+export const ALERT_SHOW_TIME = 5000;
