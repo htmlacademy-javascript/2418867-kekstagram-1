@@ -5,6 +5,7 @@ const pictureTemplate = document.querySelector('#picture')
 
 const createPhotoElement = (photo) => {
   const photoElement = pictureTemplate.cloneNode(true);
+
   photoElement.querySelector('.picture__img').src = photo.url;
   photoElement.querySelector('.picture__img').alt = photo.description;
   photoElement.querySelector('.picture__comments').textContent = photo.comments.length;
@@ -14,14 +15,20 @@ const createPhotoElement = (photo) => {
   return photoElement;
 };
 
+const clearGallery = () => {
+  document.querySelectorAll('.picture').forEach((picture) => {
+    picture.remove();
+  });
+};
 
 export const renderGallery = (gallery) => {
 
   const galleryFragment = document.createDocumentFragment();
-
+  clearGallery();
   gallery.forEach((photo) => {
     galleryFragment.append(createPhotoElement(photo));
   });
 
   picturesContainerElement.append(galleryFragment);
 };
+

@@ -12,21 +12,21 @@ const showAlertError = (setEscListener) => {
       if (evt.target.classList.contains('error')) {
         closeAlert();
       }
-    })
+    });
     document.body.append(errorElement);
-    document.addEventListener('keydown', escKeyHandler());
+    document.addEventListener('keydown', escKeyHandler);
   }
-}
+};
 
-const closeAlert = () => {
+function closeAlert () {
   document.querySelector('.error').remove();
   document.removeEventListener('keydown', escKeyHandler);
   ecsListenerFn();
-};
+}
 
 function escKeyHandler(e) {
   if (e.key === 'Escape') {
-    closeAlert()
+    closeAlert();
   }
 }
 

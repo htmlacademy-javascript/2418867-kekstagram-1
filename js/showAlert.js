@@ -7,19 +7,19 @@ const showAlert = () => {
     if(evt.target.classList.contains('success')){
       closeAlert();
     }
-  })
+  });
   document.body.append(successElement);
   document.addEventListener('keydown', escKeyHandler);
-}
+};
 
-const closeAlert = () => {
+function closeAlert () {
   document.querySelector('.success').remove();
   document.removeEventListener('keydown', escKeyHandler);
-};
+}
 
 function escKeyHandler(e){
   if (e.key === 'Escape') {
-    closeAlert()
+    closeAlert();
   }
 }
 
