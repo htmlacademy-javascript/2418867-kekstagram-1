@@ -4,6 +4,7 @@ import { resetScale } from './scale.js';
 import { resetEffects } from './slider.js';
 import { showAlertError } from './showAlertError.js';
 import { showAlert } from './showAlert.js';
+import { POST_URL } from './constant.js';
 
 const changeUpload = document.querySelector('#upload-file');
 const imgUpload = document.querySelector('.img-upload__overlay');
@@ -41,7 +42,7 @@ const setUserFormSubmit = (onSuccess) => {
       blockButton(true);
       const formData = new FormData(evt.target);
       fetch(
-        'https://28.javascript.htmlacademy.pro/kekstagram',
+        POST_URL,
         {
           method: 'POST',
           body: formData,

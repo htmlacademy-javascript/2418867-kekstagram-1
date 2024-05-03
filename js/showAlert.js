@@ -1,3 +1,5 @@
+import { isEscapeKey } from './utils.js';
+
 const successTemplate = document.querySelector('#success').content.querySelector('.success');
 
 const showAlert = () => {
@@ -18,7 +20,7 @@ function closeAlert () {
 }
 
 function escKeyHandler(e){
-  if (e.key === 'Escape') {
+  if (isEscapeKey(e.key)) {
     closeAlert();
   }
 }

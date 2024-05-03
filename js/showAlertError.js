@@ -1,3 +1,5 @@
+import { isEscapeKey } from './utils.js';
+
 const errorTemplate = document.querySelector('#error').content.querySelector('.error');
 let ecsListenerFn;
 
@@ -25,7 +27,7 @@ function closeAlert () {
 }
 
 function escKeyHandler(e) {
-  if (e.key === 'Escape') {
+  if (isEscapeKey(e.key)) {
     closeAlert();
   }
 }

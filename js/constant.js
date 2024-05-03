@@ -1,3 +1,6 @@
+export const GET_URL = 'https://28.javascript.htmlacademy.pro/kekstagram/data';
+export const POST_URL = 'https://28.javascript.htmlacademy.pro/kekstagram/';
+
 export const Effects = {
   CHROME: {
     range: {
@@ -64,6 +67,6 @@ export const IMAGE_EFFECT_INITIAL = 'NONE';
 
 export const ALERT_SHOW_TIME = 5000;
 
-export const ALERT_ERROR_TEXT = 'Упссс';
+export const ALERT_ERROR_TEXT = 'Произошла ошибка. Повторите попытку позже.';
 
 export const COUNT_TIME_OUT = 500;
