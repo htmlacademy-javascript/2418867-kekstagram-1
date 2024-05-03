@@ -63,3 +63,7 @@ export const ImageEffects = {
 export const IMAGE_EFFECT_INITIAL = 'NONE';
 
 export const ALERT_SHOW_TIME = 5000;
+
+export const ALERT_ERROR_TEXT = 'Упссс';
+
+export const COUNT_TIME_OUT = 500;
