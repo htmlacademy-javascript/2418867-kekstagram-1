@@ -33,8 +33,10 @@ const updateSlider = (filter) => {
 
 const resetEffects = () => {
   sliderContainerElement.classList.add('hidden');
+  clearEffectClasses();
   document.querySelector('#effect-none').checked = true;
   imgUploadpreview.style.filter = ImageEffects[IMAGE_EFFECT_INITIAL]();
+
 };
 
 effectsList.addEventListener('change', (evt) => {

@@ -2,10 +2,10 @@ import { renderPicturesGallery } from './open-close.js';
 import { setUserFormSubmit, imgUploadClose } from './form.js';
 import { filterInit } from './filter.js';
 import { showErrorMessage } from './utils.js';
-import { ALERT_ERROR_TEXT } from './constant.js';
+import { ALERT_ERROR_TEXT, GET_URL } from './constant.js';
 import './upload-img.js';
 
-fetch('https://28.javascript.htmlacademy.pro/kekstagram/data')
+fetch(GET_URL)
   .then((response) => {
     if (response.ok) {
       return response.json();
