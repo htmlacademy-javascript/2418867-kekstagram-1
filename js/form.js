@@ -14,7 +14,7 @@ const closeImg = document.querySelector('#upload-cancel');
 const uploadForm = document.querySelector('.img-upload__form');
 const imgUploadButton = document.querySelector('.img-upload__submit');
 
-const ImgFiltersInactive = document.querySelector('.img-filters--inactive');
+const imgFiltersInactive = document.querySelector('.img-filters--inactive');
 
 const addEscListener = () => {
   document.addEventListener('keydown', onImgUploadEsc);
@@ -96,4 +96,4 @@ function imgUploadClose() {
   uploadForm.reset();
 }
 
-export { setUserFormSubmit, imgUploadClose, ImgFiltersInactive };
+export { setUserFormSubmit, imgUploadClose, imgFiltersInactive };
