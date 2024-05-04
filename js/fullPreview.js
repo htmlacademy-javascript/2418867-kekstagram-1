@@ -90,7 +90,7 @@ export const fullPicture = (element) => {
   renderedCommentsCount = 0;
   localComments.length = 0;
 
-  localComments.push(...element.comments);
+  localComments.push(...element.comments.slice());
   total = localComments.length;
 
   createАuthor(element);
