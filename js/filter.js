@@ -62,4 +62,4 @@ const filterInit = (loadedPictures, callback) => {
   renderFunction(pictures);
 };
 
-export { filterInit, getFilteredPictures};
+export { filterInit};
